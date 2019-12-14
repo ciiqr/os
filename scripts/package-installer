@@ -25,9 +25,9 @@ cat scripts/isolinux_label.cfg | LABEL=${VERSION} envsubst > ${DIST}/boot/linux-
 #cat scripts/isolinux_label.cfg | LABEL=debug APPEND="rancher.debug=true" envsubst > ${DIST}/boot/linux-previous.cfg
 if [ "$OS_AUTOFORMAT" = "true" ]; then
     APPEND_AUTOFORMAT="rancher.state.autoformat=[/dev/sda,/dev/vda] rancher.state.dev=LABEL=RANCHER_STATE rancher.state.wait=true"
-    cat scripts/global.cfg | APPEND="$APPEND_AUTOFORMAT" envsubst > ${DIST}/boot/global.cfg
+    cat scripts/global.cfg | APPEND="$APPEND_AUTOFORMAT $APPEND_KERNEL_ARGS" envsubst > ${DIST}/boot/global.cfg
 else
-    cat scripts/global.cfg | envsubst > ${DIST}/boot/global.cfg
+    cat scripts/global.cfg | APPEND="$APPEND_KERNEL_ARGS" envsubst > ${DIST}/boot/global.cfg
 fi
 cp scripts/rancher.png ${DIST}/boot/
 

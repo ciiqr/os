@@ -63,6 +63,7 @@ ARG SELINUX_POLICY_URL=https://github.com/rancher/refpolicy/releases/download/v0
 ARG KERNEL_VERSION=4.14.156-rancher
 ARG KERNEL_URL_amd64=https://github.com/rancher/os-kernel/releases/download/v${KERNEL_VERSION}/linux-${KERNEL_VERSION}-x86.tar.gz
 ARG KERNEL_URL_arm64=https://github.com/rancher/os-kernel/releases/download/v${KERNEL_VERSION}/linux-${KERNEL_VERSION}-arm64.tar.gz
+ARG APPEND_KERNEL_ARGS=
 
 ARG BUILD_DOCKER_URL_amd64=https://get.docker.com/builds/Linux/x86_64/docker-1.10.3
 ARG BUILD_DOCKER_URL_arm64=https://github.com/rancher/docker/releases/download/v1.10.3-ros1/docker-1.10.3_arm64
@@ -112,6 +113,7 @@ ENV BUILD_DOCKER_URL=BUILD_DOCKER_URL_${ARCH} \
     KERNEL_URL=KERNEL_URL_${ARCH} \
     KERNEL_URL_amd64=${KERNEL_URL_amd64} \
     KERNEL_URL_arm64=${KERNEL_URL_arm64} \
+    APPEND_KERNEL_ARGS=${APPEND_KERNEL_ARGS} \
     OS_BASE_URL=OS_BASE_URL_${ARCH} \
     OS_BASE_URL_amd64=${OS_BASE_URL_amd64} \
     OS_BASE_URL_arm64=${OS_BASE_URL_arm64} \
