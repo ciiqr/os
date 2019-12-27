@@ -12,4 +12,6 @@ ARTIFACTS=$(pwd)/dist/artifacts
 
 mkdir -p ${ARTIFACTS}
 
+cp -a .extra/. ${INITRD_DIR}/
+
 tar czf ${ARTIFACTS}/rootfs${SUFFIX}.tar.gz --exclude lib/modules --exclude lib/firmware -C ${INITRD_DIR} .
